@@ -1,0 +1,45 @@
+.container-fluid {
+  background-color: grey;
+  .container {
+    .header {
+      background-color: brown;
+      &_logo {
+        background-color: blue;
+      }
+      &_btn {
+        background-color: chartreuse;
+        &-left {
+          background-color: darkolivegreen;
+        }
+        &-right {
+          background-color: deeppink;
+        }
+      }
+    }
+  }
+}
+
+.container {
+  .top {
+    background-color: darkorange;
+    &_exhibit {
+      background-color: darkviolet;
+    }
+    &_search {
+      background-color: lightseagreen;
+    }
+  }
+
+  .content {
+    background-color: lightslategray;
+    &_image {
+      background-color: maroon;
+    }
+    &_title {
+      background-color: mediumspringgreen;
+    }
+    &_status {
+      background-color: mintcream;
+    }
+  }
+}
