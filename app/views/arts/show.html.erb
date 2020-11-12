@@ -1,1 +1,100 @@
-詳細画面
+<div class="container-fluid">
+  <div class="container">
+    <div class="header">
+      <div class="header_logo">
+        <a href="/">ARTY VALUE</a>
+      </div>
+      <div class="header_btn">
+        <% if user_signed_in? %>
+          <div class="header_btn_left">
+            <%= link_to "Signup", new_user_registration_path, class: 'header_btn_left-link' %>
+          </div>
+          <div class="header_btn_right">
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'header_btn_right-link' %>
+          </div>
+        <% else %>
+          <div class="header_btn_left">
+            <%= link_to "Signup", new_user_registration_path, class: 'header_btn_left-link' %>
+          </div>
+          <div class="header_btn_right">
+            <%= link_to "Login", new_user_session_path, class: 'header_btn_right-link' %>
+          </div>
+        <% end %>          
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content_show">
+  <div class="content_show_image">
+    <%= image_tag "#{@art.image_url}", class: 'content_show_image-link', alt: '作品の画像' %></a>
+  </div>
+  <div class="content_show_title">
+    <%= @art.title %>
+  </div>
+  <div class="content_show_status">
+    <div class="content_show_status_artist">
+      <%= @art.user.name %>
+    </div>
+    <div class="content_show_status_price">
+      <%= @art.price %><span class="content_show_status_price-unit">円</span>
+    </div>
+  </div>
+
+  <div class="content_show_comment">
+    <div class="content_show_comment_title">
+      コメント
+    </div>
+    <% @comments.each do |comment| %>
+    <div class="content_show_comment_user">
+    <%= comment.user.name %>
+    </div>
+    <div class="content_show_comment_text">
+    <%= comment.text %>
+    </div>
+    <% end %>
+  
+    <% unless current_user.id == @art.user.id %>
+      <div class="content_show_comment_form">
+        <%= form_tag("/arts/#{@art.id}/comments", method: :post) do %>
+          <%# <%= render partial:"comments", locals: {comments: @comments} %> 
+          <div class="content_show_comment_form_textarea">
+            <textarea cols="34" name="text" rows="4" id="comarea" class="content_show_comment_form_textarea-box"></textarea>
+          </div>
+          <div class="content_show_comment_form_input">
+            <input type="submit" value="コメントする" class="content_show_comment_form_input-btn">
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="content_show_check_form">
+        <%= form_for @art do |f| %>
+          売約済みにしますか？
+          <%# <%= f.check_box :status [checked_value = "1", unchecked_value = "0"]%>
+          <%= f.check_box(:status, {},checked_value = "0",unchecked_value = "1" ) %>
+          <%= f.submit '更新する'%>
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="container">
+    <div class="footer">
+      <div class="footer_logo">
+        ARTY VALUE
+      </div>
+      <div class="footer_list">
+        <ul>
+          <li>運営会社</li>
+          <li>プライバシーポリシー</li>
+        </ul>
+      </div>
+      <div class="footer_copy">
+        ©️2020 Arty Value all rights reserved
+      </div>
+    </div>
+  </div>  
+</div>

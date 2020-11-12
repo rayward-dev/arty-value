@@ -59,17 +59,18 @@
             <%= art.user.name %>
           </div>
           <div class="content_status_price">
-            100,000 <span class="content_status_price-unit">PC</span>
+            <%= art.price %><span class="content_status_price-unit">円</span>
           </div>
           <div class="content_status_icon">
             <div class="content_status_icon_i">
-              <i class="fas fa-coins"></i>
-              <%# <%= link_to '', "/arts/#{art.id}", method: :get do %>
-                <%# <i class="fas fa-coins"></i> %>
-              <%# <% end %> 
-              <div class="content_status_icon_i-more">
-                入札/詳細へ
-              </div>
+              <a href="/arts/<%= art.id %>">
+                <i class="fas fa-coins content_status_icon_i-link"></i>
+              </a>
+              <a href="/arts/<%= art.id %>">
+                <div class="content_status_icon_i-more">
+                  入札/詳細へ
+                </div>
+              </a>
             </div>
           </div>
         </div>

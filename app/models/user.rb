@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :arts
   has_many :comments
   has_many :likes
+  mount_uploader :image_url, ImageUploader
 end

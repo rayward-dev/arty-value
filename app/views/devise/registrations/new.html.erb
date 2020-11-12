@@ -9,6 +9,15 @@
   </div>
 
   <div class="field">
+    <%= f.label :image_url %><br />
+    <%= f.file_field :image_url, autofocus: true, autocomplete: "image_url" %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :pc, value: 10000, autofocus: true, autocomplete: "pc" %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>

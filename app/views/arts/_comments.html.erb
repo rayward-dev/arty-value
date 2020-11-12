@@ -1,0 +1,10 @@
+<%# <% if comments %>
+  <%= comments.each do |comment| %>
+    <div>
+      <%= comment.user.name %>
+    </div>
+    <div>
+      <%= comment.text %>
+    </div>
+  <% end %>
+<%# <% end %>
