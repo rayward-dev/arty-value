@@ -5,12 +5,21 @@
         ARTY VALUE
       </div>
       <div class="header_btn">
-        <div class="header_btn-left">
-          Signup
-        </div>
-        <div class="header_btn-right">
-          Login
-        </div>
+        <% if user_signed_in? %>
+          <div class="header_btn_left">
+            <%= link_to "Signup", new_user_registration_path, class: 'header_btn_left-link' %>
+          </div>
+          <div class="header_btn_right">
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'header_btn_right-link' %>
+          </div>
+        <% else %>
+          <div class="header_btn_left">
+            <%= link_to "Signup", new_user_registration_path, class: 'header_btn_left-link' %>
+          </div>
+          <div class="header_btn_right">
+            <%= link_to "Login", new_user_session_path, class: 'header_btn_right-link' %>
+          </div>
+        <% end %>          
       </div>
     </div>
   </div>
@@ -20,11 +29,11 @@
   <div class="container">
     <div class="top">
       <div class="top_exhibit">
-        <div class="top_exhibit-icon">
-          <i class="fas fa-palette"></i>
+        <div class="top_exhibit_icon">
+          <a class="top_exhibit_icon-link" href="/arts/new"><i class="fas fa-palette"></i></a>
         </div>
-        <div class="top_exhibit-text">
-          出典する
+        <div class="top_exhibit_text">
+          <a class="top_exhibit_text-link" href="/arts/new">出典する</a>
         </div>
       </div>
       <div class="top_search">
@@ -38,29 +47,33 @@
     </div>
 
     <div class="content">
-      <div class="content_image">
-        作品の画像
-      </div>
-      <div class="content_title">
-        作品タイトル
-      </div>
-      <div class="content_status">
-        <div class="content_status_artist">
-          Artist / No Name
+      <% @arts.each do |art| %>
+        <div class="content_image">
+          <a href="/arts/<%= art.id %>"><%= image_tag "#{art.image_url}", class: 'content_image-link', alt: '作品の画像' %></a>
         </div>
-        <div class="content_status_price">
-          100,000 <span class="content_status_price-unit">PC</span>
+        <div class="content_title">
+          <%= art.title %>
         </div>
-        <div class="content_status_icon">
-          <div class="content_status_icon_i">
-            <i class="fas fa-coins"></i>
-            <div class="content_status_icon_i-more">
-              入札/詳細へ
+        <div class="content_status">
+          <div class="content_status_artist">
+            <%= art.user.name %>
+          </div>
+          <div class="content_status_price">
+            100,000 <span class="content_status_price-unit">PC</span>
+          </div>
+          <div class="content_status_icon">
+            <div class="content_status_icon_i">
+              <i class="fas fa-coins"></i>
+              <%# <%= link_to '', "/arts/#{art.id}", method: :get do %>
+                <%# <i class="fas fa-coins"></i> %>
+              <%# <% end %> 
+              <div class="content_status_icon_i-more">
+                入札/詳細へ
+              </div>
             </div>
           </div>
         </div>
-
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

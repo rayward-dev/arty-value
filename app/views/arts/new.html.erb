@@ -1,0 +1,10 @@
+<div class="container">
+  <%= form_for @art do |f| %>
+    <div>
+    出典する
+  </div>
+    <%= f.text_field :title %>
+    <%= f.file_field :image_url %>
+    <%= f.submit 'アップロードする'%>
+  <% end %>
+</div>
