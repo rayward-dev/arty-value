@@ -9,8 +9,7 @@
     <%= f.file_field :image_url %>
     作品の説明を入力
     <%= f.text_area :description %>
-    作品の希望価格を入力
-    <%= f.text_field :price %>
+    <%= f.hidden_field :price, value: 0 %>
     <%= f.hidden_field :value_point, value: 50 %>
     <%= f.hidden_field :status, value: 1 %>
     <%= f.submit 'アップロードする'%>

@@ -37,7 +37,11 @@
       <%= @art.user.name %>
     </div>
     <div class="content_show_status_price">
+    <% unless @art.price == 0 %>
       <%= @art.price %><span class="content_show_status_price-unit">円</span>
+    <% else %>
+      <span class="content_show_status_price-unit">価格査定中</span>
+    <% end %>
     </div>
   </div>
 
