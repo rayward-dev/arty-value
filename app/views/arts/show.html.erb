@@ -2,12 +2,12 @@
   <div class="container">
     <div class="header">
       <div class="header_logo">
-        <a href="/">ARTY VALUE</a>
+        ARTY VALUE
       </div>
       <div class="header_btn">
         <% if user_signed_in? %>
           <div class="header_btn_left">
-            <%= link_to "Signup", new_user_registration_path, class: 'header_btn_left-link' %>
+            <%= link_to "Home", "/arts", class: 'header_btn_left-link' %>
           </div>
           <div class="header_btn_right">
             <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'header_btn_right-link' %>
@@ -69,11 +69,27 @@
             <input type="submit" value="コメントする" class="content_show_comment_form_input-btn">
           </div>
         <% end %>
+        <div class="content_show_comment_form-point">
+        あなたの入札限度額は「<%= current_user.pc %>PC」です
+        </div>
       </div>
     <% else %>
+      <div class="content_show_comment_form">
+        <%= form_tag("/arts/#{@art.id}/comments", method: :post) do %>
+          <%# <%= render partial:"comments", locals: {comments: @comments} %> 
+          <div class="content_show_comment_form_textarea">
+            <textarea cols="34" name="text" rows="4" id="comarea" class="content_show_comment_form_textarea-box"></textarea>
+          </div>
+          <div class="content_show_comment_form_input">
+            <input type="submit" value="返答する" class="content_show_comment_form_input-btn">
+          </div>
+        <% end %>
+      </div>
       <div class="content_show_check_form">
         <%= form_for @art do |f| %>
-          売約済みにしますか？
+        <div class="content_show_check_form-sell">
+          この作品を売約済みにしますか？
+        </div>
           <%# <%= f.check_box :status [checked_value = "1", unchecked_value = "0"]%>
           <%= f.check_box(:status, {},checked_value = "0",unchecked_value = "1" ) %>
           <%= f.submit '更新する'%>
@@ -92,8 +108,8 @@
       </div>
       <div class="footer_list">
         <ul>
-          <li>運営会社</li>
-          <li>プライバシーポリシー</li>
+          <li> <a class="footer_list_text" href="https://rayward.jp/">運営会社</a></li>
+          <li><a class="footer_list_text" href="https://rayward.jp/wp-content/themes/rayward/privacy.html">プライバシーポリシー</a></li>
         </ul>
       </div>
       <div class="footer_copy">

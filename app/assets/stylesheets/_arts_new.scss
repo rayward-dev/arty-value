@@ -1,0 +1,48 @@
+.arts_new_area {
+  text-align: center;
+  margin: 80px auto 200px auto;
+  padding: 50px;
+  width: 500px;
+  border-radius: 5px;
+  background-color: rgb(240, 240, 240);
+
+  &_title {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 30px;
+  }
+  &_head {
+    font-weight: bold;
+    padding: 40px 0 20px 0;
+  }
+  &_box {
+    padding-left: 5px;
+    margin-bottom: 20px;
+    width: 350px;
+    margin: 0 auto;
+  }
+  &_box:focus {
+    outline: 0;
+  }
+  &_disbox {
+    padding-left: 5px;
+    margin-bottom: 20px;
+    width: 350px;
+    margin: 0 auto;
+    height: 150px;
+  }
+  &_disbox:focus {
+    outline: 0;
+  }
+  &_image {
+    font-size: 12px;
+  }
+  &_btn {
+    font-size: 14px;
+    padding: 3px 10px;
+    margin: 60px 0 10px 0;
+    width: 200px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(58, 58, 58);
+  }
+}

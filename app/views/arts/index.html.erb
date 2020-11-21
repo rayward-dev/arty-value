@@ -7,7 +7,7 @@
       <div class="header_btn">
         <% if user_signed_in? %>
           <div class="header_btn_left">
-            <%= link_to "Signup", new_user_registration_path, class: 'header_btn_left-link' %>
+            <%= link_to "Home", "/arts", class: 'header_btn_left-link' %>
           </div>
           <div class="header_btn_right">
             <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'header_btn_right-link' %>
@@ -36,50 +36,67 @@
           <a class="top_exhibit_text-link" href="/arts/new">出典する</a>
         </div>
       </div>
-      <div class="top_search">
-        <div class="top_search-icon">
-          <i class="fas fa-search"></i>
-        </div>
-        <div class="top_search-text">
-          ARTを探す
-        </div>
-      </div>
+      <%# <div class="top_search"> %>
+        <%# <div class="top_search-icon"> %>
+          <%# <i class="fas fa-search"></i> %>
+        <%# </div> %>
+        <%# <div class="top_search-text"> %>
+          <%# ARTを探す %>
+        <%# </div> %>
+      <%# </div> %>
     </div>
 
     <div class="content">
-      <% @arts.each do |art| %>
-        <div class="content_image">
-          <a href="/arts/<%= art.id %>"><%= image_tag "#{art.image_url}", class: 'content_image-link', alt: '作品の画像' %></a>
-        </div>
-        <div class="content_title">
-          <%= art.title %>
-        </div>
-        <div class="content_status">
-          <div class="content_status_artist">
-            <%= art.user.name %>
+      <% if @arts.present? %>
+        <% @arts.each do |art| %>
+          <div class="content_image">
+          <%= image_tag "#{art.image_url}", class: 'content_image-link', alt: '作品の画像' %>
+            <%# <a href="/arts/<%= art.id %>
+            <%# <%= image_tag "#{art.image_url}", class: 'content_image-link', alt: '作品の画像' %>
+            <%# </a> %>
           </div>
-          <div class="content_status_price">
-          <% unless art.price == 0 %>
-            <%= art.price %><span class="content_status_price-unit">円</span>
+          <div class="content_title">
+            <%= art.title %>
+          </div>
+          <div class="content_status">
+            <div class="content_status_artist">
+              <%= art.user.name %>
+            </div>
+            <div class="content_status_price">
+            <% unless art.price == 0 %>
+              <%= art.price %><span class="content_status_price-unit">円</span>
+            <% else %>
+              <span class="content_status_price-unit">価格査定中</span>
+            <% end %>
+            </div>
+
+          <% unless art.status == "1" %>
+          <div class="content_buy">
+            売約済み
+          </div>
           <% else %>
-            <span class="content_status_price-unit">価格査定中</span>
+            <div class="content_status_icon">
+              <div class="content_status_icon_i">
+                <a href="/arts/<%= art.id %>">
+                  <i class="fas fa-coins content_status_icon_i-link"></i>
+                </a>
+                <a href="/arts/<%= art.id %>">
+                  <div class="content_status_icon_i-more">
+                    入札/詳細へ
+                  </div>
+                </a>
+              </div>
+            </div>
           <% end %>
           </div>
-          <div class="content_status_icon">
-            <div class="content_status_icon_i">
-              <a href="/arts/<%= art.id %>">
-                <i class="fas fa-coins content_status_icon_i-link"></i>
-              </a>
-              <a href="/arts/<%= art.id %>">
-                <div class="content_status_icon_i-more">
-                  入札/詳細へ
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
+
+        <% end %>
+      <% else %>
+        まだ出典作品はありません
       <% end %>
     </div>
+
+
   </div>
 </div>
 
@@ -91,8 +108,8 @@
       </div>
       <div class="footer_list">
         <ul>
-          <li>運営会社</li>
-          <li>プライバシーポリシー</li>
+          <li><a class="footer_list_text" href="https://rayward.jp/">運営会社</a></li>
+          <li><a class="footer_list_text" href="https://rayward.jp/wp-content/themes/rayward/privacy.html">プライバシーポリシー</a></li>
         </ul>
       </div>
       <div class="footer_copy">

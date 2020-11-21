@@ -10,7 +10,6 @@
         font-weight: initial;
         color: white;
         line-height: 60px;
-        cursor: pointer;
         a {
           text-decoration: none;
           color: white;
@@ -168,6 +167,10 @@
       font-family: Arial, Helvetica, sans-serif;
       box-shadow: 0 2px 4px gray;
     }
+    &_buy {
+      text-align: center;
+      color: red;
+    }
     &_status {
       padding: 20px;
       border-radius: 5px;
@@ -242,6 +245,10 @@
       &_list {
         color: white;
         text-align: center;
+        a.footer_list_text {
+          color: white;
+          text-decoration: none;
+        }
       }
       &_copy {
         color: white;

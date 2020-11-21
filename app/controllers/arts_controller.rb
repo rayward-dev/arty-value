@@ -2,7 +2,7 @@ class ArtsController < ApplicationController
   before_action :authenticate_user!, except: :index
   
   def index
-    @arts = Art.order('id ASC').limit(50)
+    @arts = Art.order('id ASC')
   end
 
   def show
@@ -22,7 +22,7 @@ class ArtsController < ApplicationController
   def update
     @art = Art.find(params[:id])
     @art.update(update_art_params)
-    redirect_to request.referer
+    redirect_to action: :index
   end
   
   private
