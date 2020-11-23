@@ -1,0 +1,28 @@
+.container-fluid {
+  background-color: black;
+  .container {
+    .footer {
+      padding: 25px 0;
+      &_logo {
+        text-align: center;
+        font-size: 14pt;
+        font-family: 'Courgette', cursive;
+        font-weight: initial;
+        color: white;
+        padding-bottom: 20px;
+      }
+      &_list {
+        color: white;
+        text-align: center;
+        a.footer_list_text {
+          color: white;
+          text-decoration: none;
+        }
+      }
+      &_copy {
+        color: white;
+        text-align: center;
+      }
+    }
+  }
+}

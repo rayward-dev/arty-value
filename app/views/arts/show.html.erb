@@ -1,29 +1,4 @@
-<div class="container-fluid">
-  <div class="container">
-    <div class="header">
-      <div class="header_logo">
-        ARTY VALUE
-      </div>
-      <div class="header_btn">
-        <% if user_signed_in? %>
-          <div class="header_btn_left">
-            <%= link_to "Home", "/arts", class: 'header_btn_left-link' %>
-          </div>
-          <div class="header_btn_right">
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'header_btn_right-link' %>
-          </div>
-        <% else %>
-          <div class="header_btn_left">
-            <%= link_to "Signup", new_user_registration_path, class: 'header_btn_left-link' %>
-          </div>
-          <div class="header_btn_right">
-            <%= link_to "Login", new_user_session_path, class: 'header_btn_right-link' %>
-          </div>
-        <% end %>          
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'shared/header' %>         
 
 <div class="content_show">
   <div class="content_show_image">
@@ -32,16 +7,39 @@
   <div class="content_show_title">
     <%= @art.title %>
   </div>
+  <% if @art.description.present? %>
+    <div class="content_show_description">
+      <%= simple_format(@art.description) %>
+    </div>
+  <% else %>
+  <% end %>
   <div class="content_show_status">
+  <% if @art.user.image_url.present? %>
+    <div class="content_show_status_avator">
+      <%= image_tag "#{@art.user.image_url}", class: 'content_show_status_avator-image', alt: 'アーティストの画像' %></a>
+    </div>
+  <% else %>
+  <% end %>
     <div class="content_show_status_artist">
       <%= @art.user.name %>
     </div>
-    <div class="content_show_status_price">
-    <% unless @art.price == 0 %>
-      <%= @art.price %><span class="content_show_status_price-unit">円</span>
-    <% else %>
-      <span class="content_show_status_price-unit">価格査定中</span>
-    <% end %>
+  <% if @art.user.introduction.present? %>
+    <div class="content_show_status_introduction">
+      <%= simple_format(@art.user.introduction) %>
+    </div>
+  <% else %>
+  <% end %>
+    <div class="content_show_status_grayback"> 
+      <div class="content_show_status_grayback_pricelabel">
+        作品の価格
+      </div>
+      <div class="content_show_status_grayback_price">
+      <% unless @art.price == 0 %>
+        <%= @art.price %><span class="content_show_status_grayback_price-unit">円</span>
+      <% else %>
+        <span class="content_show_status_price-unit">価格査定中</span>
+      <% end %>
+      </div>
     </div>
   </div>
 
@@ -96,25 +94,8 @@
         <% end %>
       </div>
     <% end %>
-
   </div>
+   <a class="btn" href="/arts">一覧へ戻る</a>
 </div>
 
-<div class="container-fluid">
-  <div class="container">
-    <div class="footer">
-      <div class="footer_logo">
-        ARTY VALUE
-      </div>
-      <div class="footer_list">
-        <ul>
-          <li> <a class="footer_list_text" href="https://rayward.jp/">運営会社</a></li>
-          <li><a class="footer_list_text" href="https://rayward.jp/wp-content/themes/rayward/privacy.html">プライバシーポリシー</a></li>
-        </ul>
-      </div>
-      <div class="footer_copy">
-        ©️2020 Arty Value all rights reserved
-      </div>
-    </div>
-  </div>  
-</div>
+<%= render 'shared/footer' %>

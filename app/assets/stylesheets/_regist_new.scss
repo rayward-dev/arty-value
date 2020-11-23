@@ -9,6 +9,32 @@
     font-size: 20px;
     padding-bottom: 30px;
   }
+  .regist_field {
+    padding-bottom: 20px;
+    &_text {
+      font-weight: bold;
+      padding-left: 20px;
+    }
+    &_box {
+      display: block;
+      width: 200px;
+      margin: 0 auto;
+      padding-left: 5px;
+    }
+    &_box:focus {
+      outline: 0;
+    }
+    &_image {
+      font-size: 12px;
+      display: block;
+      width: 200px;
+      margin: 0 auto;
+      padding-left: 5px;
+    }
+    &_image:focus {
+      outline: 0;
+    }
+  }
   .actions {
     &_box {
       text-align: center;

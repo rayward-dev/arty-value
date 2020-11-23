@@ -6,36 +6,41 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="field">
-        <%= f.label :name %><br />
-        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      <div class="regist_field">
+        <%= f.label :name, "名前", class: "regist_field_text" %><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "regist_field_box" %>
       </div>
 
-      <div class="field">
-        <%= f.label :image_url %><br />
-        <%= f.file_field :image_url, autofocus: true, autocomplete: "image_url" %>
+      <div class="regist_field">
+        <%= f.label :image_url, "プロフィール画像", class: "regist_field_text"  %><br />
+        <%= f.file_field :image_url, autofocus: true, autocomplete: "image_url", class: "regist_field_image" %>
+      </div>
+
+      <div class="regist_field">
+        <%= f.label :introduction, "自己紹介/経歴/受賞歴など", class: "regist_field_text"  %><br />
+        <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class: "regist_field_box" %>
       </div>
 
       <div class="field">
         <%= f.hidden_field :pc, value: 10000, autofocus: true, autocomplete: "pc" %>
       </div>
 
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="regist_field">
+        <%= f.label :email, "Eメール", class: "regist_field_text"  %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "regist_field_box" %>
       </div>
 
-      <div class="field">
-        <%= f.label :password %>
+      <div class="regist_field">
+        <%= f.label :password, "パスワード", class: "regist_field_text"  %>
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em>(<%= @minimum_password_length %> 文字以上)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "regist_field_box" %>
       </div>
 
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <div class="regist_field">
+        <%= f.label :password_confirmation, "パスワード再入力", class: "regist_field_text"  %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "regist_field_box" %>
       </div>
 
       <div class="actions">
