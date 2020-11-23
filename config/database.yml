@@ -49,7 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: arty_value_production
+  database: arty_value
   username: root
   password: rayward2019
   socket: /var/lib/mysql/mysql.sock
