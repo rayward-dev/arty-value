@@ -49,7 +49,7 @@ test:
 #
 production:
   <<: *default
-  datebase: <%= Rails.application.credentials.db[:datebase] %>
+  database: <%= Rails.application.credentials.db[:database] %>
   username: <%= Rails.application.credentials.db[:username] %>
   password: <%= Rails.application.credentials.db[:password] %>
   socket: <%= Rails.application.credentials.db[:socket] %>
