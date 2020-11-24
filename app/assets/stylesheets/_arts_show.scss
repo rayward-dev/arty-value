@@ -41,6 +41,7 @@
     min-width: 300px;
     font-size: 14px;
     padding-bottom: 50px;
+    font-family: Arial, Helvetica, sans-serif;
   }
   &_status {
     // text-align: center;
@@ -83,6 +84,7 @@
   
       &_pricelabel {
         padding-top :10px;
+        padding-bottom :10px;
         font-weight: normal;
         font-size: 14px;
       }

@@ -1,10 +1,4 @@
 .container {
-  max-width: 960px;
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
   .top {
     display: flex;
     align-items: center;
@@ -29,6 +23,7 @@
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
         color: slategrey;
+        margin-top: 10px;
         &-link {
           text-decoration: none;
           color: slategrey;
@@ -148,7 +143,7 @@
       &_icon {
         &_i {
           margin: 0 auto;
-          padding-top: 15px;
+          padding-top: 18px;
           width: 80px;
           height: 80px;
           border-radius: 50%;
@@ -165,6 +160,7 @@
             cursor: pointer;
           }
           &-more {
+            margin-top: 10px;
             font-size: 7pt;
             color: rgb(245, 245, 245);
             cursor: pointer;
@@ -176,17 +172,5 @@
         }
       }
     }
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-      max-width: 720px;
-  }
-}
-
-@media (min-width: 576px) {
-  .container {
-      max-width: 540px;
   }
 }
